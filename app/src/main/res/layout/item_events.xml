@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="16dp"
+    android:layout_margin="12dp"
     app:cardCornerRadius="16dp"
     app:cardElevation="8dp"
     app:cardBackgroundColor="?attr/colorSurface">
@@ -32,8 +32,7 @@
             android:textStyle="bold"
             android:textColor="?attr/colorOnSurface"
             android:textSize="20sp"
-            android:layout_marginTop="12dp"
-            android:text="Nama Event"/>
+            android:layout_marginTop="12dp"/>
 
         <!-- Event Date -->
         <TextView
@@ -41,52 +40,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="Tanggal Event"
             android:textColor="?attr/colorOnSurfaceVariant"
             android:textSize="14sp"/>
 
         <!-- Favorite Button Layout -->
-        <LinearLayout
-            android:id="@+id/favorit_layout"
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingTop="16dp"
-            android:paddingBottom="8dp">
+            android:layout_marginTop="12dp">
 
-            <!-- Favorite Icon -->
-            <ImageView
-                android:id="@+id/iv_favorite_icon"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:contentDescription="@string/event_image_desc"
-                android:src="@drawable/ic_favorite_star"
-                android:tint="?attr/colorPrimary"/>
-
-            <!-- Favorite Text -->
-            <TextView
-                android:id="@+id/tv_favorite"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_favorite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="Tambah ke favorit"
-                android:textSize="16sp"
-                android:textColor="?attr/colorPrimary"/>
-        </LinearLayout>
+                android:layout_gravity="center"
+                android:text="@string/add_to_favorite"
+                android:icon="@drawable/add_to_favorite"
+                app:iconPadding="8dp"
+                android:minWidth="200dp"
+                android:maxWidth="320dp"
+                android:backgroundTint="?attr/colorPrimaryContainer"
+                android:textColor="?attr/colorOnPrimaryContainer"
+                app:cornerRadius="12dp"/>
 
-        <!-- Material Button for action -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_more_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Selengkapnya"
-            android:layout_marginTop="12dp"
-            android:icon="@drawable/ic_info"
-            app:iconPadding="8dp"
-            android:backgroundTint="?attr/colorPrimaryContainer"
-            android:textColor="?attr/colorOnPrimaryContainer"
-            app:cornerRadius="12dp"/>
+        </FrameLayout>
 
     </LinearLayout>
 
