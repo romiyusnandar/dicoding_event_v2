@@ -12,4 +12,10 @@
         <!-- Customize your theme here. -->
         <item name="materialThemeOverlay">@style/ThemeOverlay.Material3.DynamicColors.Light</item>
     </style>
+
+    <style name="CustomRoundedCorners" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
 </resources>
