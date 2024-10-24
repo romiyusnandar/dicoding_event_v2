@@ -2,12 +2,16 @@ package com.ryu.dicodingeventsv2.ui.events
 
 import androidx.fragment.app.viewModels
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ryu.dicodingeventsv2.R
 import com.ryu.dicodingeventsv2.databinding.FragmentEventsBinding
 import com.ryu.dicodingeventsv2.ui.EventAdapter
 import com.ryu.dicodingeventsv2.ui.EventViewModel
@@ -39,11 +43,15 @@ class EventsFragment : Fragment() {
 
     private fun setupRecyclerView() {
         eventAdapter = EventAdapter{ event ->
-            Toast.makeText(requireContext(), event.name, Toast.LENGTH_SHORT).show()
+            Navigation.findNavController(requireView())
+                .navigate(R.id.detailFragment, Bundle().apply {
+                    putString("eventId", event.id.toString())
+                })
+            Log.d("EventFragment", "Navigating to DetailFragment with eventId: ${event.id}")
         }
         binding.rvEvents.apply {
-            layoutManager = LinearLayoutManager(requireContext())
             adapter = eventAdapter
+            layoutManager = LinearLayoutManager(requireContext())
         }
     }
 

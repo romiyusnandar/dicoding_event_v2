@@ -14,7 +14,7 @@ class EventAdapter(private val onItemClick: (ListEventsItem) -> Unit) : ListAdap
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
         val binding = ItemEventsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return EventViewHolder(binding)
+        return EventViewHolder(binding, onItemClick)
     }
 
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
@@ -23,16 +23,18 @@ class EventAdapter(private val onItemClick: (ListEventsItem) -> Unit) : ListAdap
         holder.itemView.setOnClickListener { onItemClick(event) }
     }
 
-    class EventViewHolder(private val binding: ItemEventsBinding) : RecyclerView.ViewHolder(binding.root) {
+    class EventViewHolder(private val binding: ItemEventsBinding, private val onItemClick: (ListEventsItem) -> Unit) : RecyclerView.ViewHolder(binding.root) {
         fun bind(event: ListEventsItem) {
             binding.apply {
-                tvEventName.text = event.name
-                tvEventDate.text = event.beginTime
+                tvEventName.text = event.name ?: "No Title"
+                tvEventDate.text = event.beginTime ?: "No Category"
                 Glide.with(ivEventLogo.context)
                     .load(event.mediaCover)
                     .placeholder(R.drawable.ic_launcher_foreground)
                     .into(ivEventLogo)
             }
+
+            binding.root.setOnClickListener { onItemClick(event) }
         }
     }
 
